@@ -1,13 +1,15 @@
 version: '1'
 services:
-  mongo-web-app:
-    image: mongo-web-app # change to custom repository
-    ports: 
-      - 3000:3000
+  # mongo-web-app:
+  #   image: mongo-web-app # change to custom repository
+  #   ports: 
+  #     - 3000:3000
   mongodb:
     image: mongo
     ports: 
       - 27017:27017
+    volumes: 
+    - mongo-data: /data/db
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=password 
@@ -19,3 +21,6 @@ services:
       - ME_CONFIG_MONGODB_SERVER=mongodb
       - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
       - ME_CONFIG_MONGODB_ADMINPASSWORD=password
+volumes:
+  mongo-data:
+    driver: local
