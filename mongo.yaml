@@ -1,5 +1,9 @@
 version: '1'
 services:
+  mongo-web-app:
+    image: mongo-web-app # change to custom repository
+    ports: 
+      - 3000:3000
   mongodb:
     image: mongo
     ports: 
